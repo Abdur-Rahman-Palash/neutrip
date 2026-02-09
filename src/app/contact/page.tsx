@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { fadeInUp, slideInLeft, slideInRight, scaleIn, staggerContainer, hoverScale, hoverLift } from "@/components/layout/AnimatedLayout";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -77,25 +79,25 @@ export default function Contact() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="pt-24 pb-12">
+      <motion.main {...staggerContainer} className="pt-24 pb-12">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
+          <motion.div {...fadeInUp} className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Contact Us
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We're here to help! Reach out to us through any of the channels below and we'll get back to you as soon as possible.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Contact Form */}
-            <div className="lg:col-span-2">
+            <motion.div {...slideInLeft} className="lg:col-span-2">
               <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
                 
                 {submitted ? (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                  <motion.div {...scaleIn} className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
                     <div className="text-green-600 mb-2">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -105,11 +107,11 @@ export default function Contact() {
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Message Sent Successfully!</h3>
                     <p className="text-gray-600">Thank you for contacting us. We'll get back to you within 24 hours.</p>
-                  </div>
+                  </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
+                      <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
                         <input
                           type="text"
@@ -120,9 +122,9 @@ export default function Contact() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Enter your full name"
                         />
-                      </div>
+                      </motion.div>
                       
-                      <div>
+                      <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
                         <input
                           type="email"
@@ -133,9 +135,9 @@ export default function Contact() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="your@email.com"
                         />
-                      </div>
+                      </motion.div>
                       
-                      <div>
+                      <motion.div {...fadeInUp} transition={{ delay: 0.3 }}>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
                         <input
                           type="tel"
@@ -146,9 +148,9 @@ export default function Contact() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Your phone number"
                         />
-                      </div>
+                      </motion.div>
                       
-                      <div>
+                      <motion.div {...fadeInUp} transition={{ delay: 0.4 }}>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Department</label>
                         <select
                           name="department"
@@ -162,10 +164,10 @@ export default function Contact() {
                             </option>
                           ))}
                         </select>
-                      </div>
+                      </motion.div>
                     </div>
                     
-                    <div>
+                    <motion.div {...fadeInUp} transition={{ delay: 0.5 }}>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Subject *</label>
                       <input
                         type="text"
@@ -176,9 +178,9 @@ export default function Contact() {
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="How can we help you?"
                       />
-                    </div>
+                    </motion.div>
                     
-                    <div>
+                    <motion.div {...fadeInUp} transition={{ delay: 0.6 }}>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Message *</label>
                       <textarea
                         name="message"
@@ -189,20 +191,22 @@ export default function Contact() {
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Tell us more about your inquiry..."
                       />
-                    </div>
+                    </motion.div>
                     
-                    <Button type="submit" size="lg" className="w-full">
-                      Send Message
-                    </Button>
+                    <motion.div {...hoverScale} transition={{ delay: 0.7 }}>
+                      <Button type="submit" size="lg" className="w-full">
+                        Send Message
+                      </Button>
+                    </motion.div>
                   </form>
                 )}
               </div>
 
               {/* Quick Contact */}
-              <div className="bg-white rounded-lg shadow-sm p-6">
+              <motion.div {...scaleIn} transition={{ delay: 0.3 }} className="bg-white rounded-lg shadow-sm p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Contact</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3">
+                  <motion.div {...hoverLift} className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -212,9 +216,9 @@ export default function Contact() {
                       <div className="font-medium text-gray-900">24/7 Hotline</div>
                       <div className="text-sm text-gray-600">+880 9617-617-617</div>
                     </div>
-                  </div>
+                  </motion.div>
                   
-                  <div className="flex items-center gap-3">
+                  <motion.div {...hoverLift} className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <rect width="20" height="16" x="2" y="4" rx="2"/>
@@ -225,19 +229,24 @@ export default function Contact() {
                       <div className="font-medium text-gray-900">Email Support</div>
                       <div className="text-sm text-gray-600">support@sharetrip.net</div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Contact Information */}
-            <div className="lg:col-span-1">
+            <motion.div {...slideInRight} className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
                 <h2 className="text-xl font-bold text-gray-900 mb-6">Office Locations</h2>
                 
                 <div className="space-y-6">
                   {contactInfo.map((office, index) => (
-                    <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
+                    <motion.div 
+                      key={index} 
+                      {...hoverLift}
+                      transition={{ delay: index * 0.1 }}
+                      className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0"
+                    >
                       <h3 className="font-bold text-gray-900 mb-3">{office.title}</h3>
                       
                       <div className="space-y-2">
@@ -271,13 +280,13 @@ export default function Contact() {
                           <div className="text-sm text-gray-600">{office.email}</div>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
 
               {/* Map */}
-              <div className="bg-white rounded-lg shadow-sm p-6">
+              <motion.div {...scaleIn} transition={{ delay: 0.4 }} className="bg-white rounded-lg shadow-sm p-6">
                 <h2 className="text-xl font-bold text-gray-900 mb-4">Find Us</h2>
                 <div className="relative h-64 bg-gray-100 rounded-lg overflow-hidden">
                   <iframe
@@ -290,12 +299,12 @@ export default function Contact() {
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* FAQ Section */}
-          <div className="mt-16">
+          <motion.div {...fadeInUp} className="mt-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
@@ -316,15 +325,20 @@ export default function Contact() {
                   answer: "Yes, we offer comprehensive travel insurance options for your peace of mind."
                 }
               ].map((faq, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-sm p-6">
+                <motion.div 
+                  key={index} 
+                  {...hoverLift}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-lg shadow-sm p-6"
+                >
                   <h3 className="font-bold text-gray-900 mb-2">{faq.question}</h3>
                   <p className="text-gray-600 text-sm">{faq.answer}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </main>
+      </motion.main>
 
       <Footer />
     </div>

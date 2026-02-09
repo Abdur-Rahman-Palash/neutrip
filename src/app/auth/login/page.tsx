@@ -5,6 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { fadeInUp, scaleIn, hoverScale, hoverLift } from "@/components/layout/AnimatedLayout";
 
 function LoginContent() {
   const router = useRouter();

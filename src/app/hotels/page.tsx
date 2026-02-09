@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/Button";
 import { CityAutocomplete } from "@/components/ui/CityAutocomplete";
 import { DatePicker } from "@/components/ui/DatePicker";
 import { City } from "@/data/cities";
+import { motion } from "framer-motion";
+import { fadeInUp, slideInLeft, slideInRight, scaleIn, staggerContainer, hoverScale, hoverLift } from "@/components/layout/AnimatedLayout";
 
 interface GuestRoom {
   adults: number;
@@ -86,10 +88,10 @@ export default function HotelSearch() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="pt-24 pb-12">
+      <motion.main {...staggerContainer} className="pt-24 pb-12">
         <div className="container mx-auto px-4 md:px-6">
           {/* Page Header */}
-          <div className="text-center mb-8">
+          <motion.div {...fadeInUp} className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Search Hotels
             </h1>
@@ -99,9 +101,9 @@ export default function HotelSearch() {
           </div>
 
           {/* Search Form */}
-          <div className="max-w-4xl mx-auto">
+          <motion.div {...scaleIn} className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 {/* Destination */}
                 <div className="md:col-span-2">
                   <CityAutocomplete
@@ -127,13 +129,14 @@ export default function HotelSearch() {
                   min={checkIn || today}
                   label="Check-out"
                 />
-              </div>
+              </motion.div>
 
               {/* Guests & Rooms */}
-              <div className="mb-6">
+              <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="mb-6">
                 <div className="relative">
-                  <button
+                  <motion.button
                     onClick={() => setIsGuestSelectorOpen(!isGuestSelectorOpen)}
+                    {...hoverScale}
                     className="w-full h-12 px-4 flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg text-gray-900 text-sm font-medium hover:bg-white hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-left"
                   >
                     <span className="truncate">
@@ -142,7 +145,7 @@ export default function HotelSearch() {
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="m6 9 6 6 6-6"/>
                     </svg>
-                  </button>
+                  </motion.button>
 
                   {isGuestSelectorOpen && (
                     <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-4">
@@ -254,7 +257,7 @@ export default function HotelSearch() {
               </div>
 
               {/* Search Button */}
-              <div className="text-center">
+              <motion.div {...hoverScale} transition={{ delay: 0.4 }} className="text-center">
                 <Button
                   size="lg"
                   onClick={handleSearch}
@@ -262,75 +265,79 @@ export default function HotelSearch() {
                 >
                   Search Hotels
                 </Button>
-              </div>
+              </motion.div>
             </div>
+          </motion.div>
 
-            {/* Popular Destinations */}
-            <div className="mt-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Popular Hotel Destinations</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[
-                  { city: "Dhaka", country: "Bangladesh", price: "BDT 3,500", hotels: 156 },
-                  { city: "Cox's Bazar", country: "Bangladesh", price: "BDT 4,200", hotels: 89 },
-                  { city: "Sylhet", country: "Bangladesh", price: "BDT 2,800", hotels: 67 },
-                  { city: "Dubai", country: "UAE", price: "BDT 8,500", hotels: 456 },
-                  { city: "Singapore", country: "Singapore", price: "BDT 12,000", hotels: 234 },
-                  { city: "Bangkok", country: "Thailand", price: "BDT 5,500", hotels: 189 },
-                ].map((destination, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg p-4 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer"
-                    onClick={() => {
-                      const city = { id: index.toString(), name: destination.city, country: destination.country, code: destination.city.substring(0, 3).toUpperCase(), timezone: "Asia/Dhaka" };
-                      setDestination(city);
-                    }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-medium text-gray-900">
-                          {destination.city}
-                        </div>
-                        <div className="text-sm text-gray-500">{destination.country}</div>
-                        <div className="text-xs text-gray-400">{destination.hotels} hotels</div>
+          {/* Popular Destinations */}
+          <motion.div {...fadeInUp} transition={{ delay: 0.5 }} className="mt-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Popular Hotel Destinations</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { city: "Dhaka", country: "Bangladesh", price: "BDT 3,500", hotels: 156 },
+                { city: "Cox's Bazar", country: "Bangladesh", price: "BDT 4,200", hotels: 89 },
+                { city: "Sylhet", country: "Bangladesh", price: "BDT 2,800", hotels: 67 },
+                { city: "Dubai", country: "UAE", price: "BDT 8,500", hotels: 456 },
+                { city: "Singapore", country: "Singapore", price: "BDT 12,000", hotels: 234 },
+                { city: "Bangkok", country: "Thailand", price: "BDT 5,500", hotels: 189 },
+              ].map((destination, index) => (
+                <motion.div
+                  key={index}
+                  {...hoverLift}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-lg p-4 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer"
+                  onClick={() => {
+                    const city = { id: index.toString(), name: destination.city, country: destination.country, code: destination.city.substring(0, 3).toUpperCase(), timezone: "Asia/Dhaka" };
+                    setDestination(city);
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-medium text-gray-900">
+                        {destination.city}
                       </div>
-                      <div className="text-right">
-                        <div className="font-bold text-blue-600">{destination.price}</div>
-                        <div className="text-xs text-gray-500">from/night</div>
-                      </div>
+                      <div className="text-sm text-gray-500">{destination.country}</div>
+                      <div className="text-xs text-gray-400">{destination.hotels} hotels</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-blue-600">{destination.price}</div>
+                      <div className="text-xs text-gray-500">from/night</div>
                     </div>
                   </div>
-                ))}
-              </div>
+                </motion.div>
+              ))}
             </div>
+          </motion.div>
 
-            {/* Hotel Types */}
-            <div className="mt-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Browse by Hotel Type</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { type: "Luxury Hotels", icon: "🏨", count: 45 },
-                  { type: "Budget Hotels", icon: "💰", count: 78 },
-                  { type: "Resorts", icon: "🏖️", count: 23 },
-                  { type: "Business Hotels", icon: "💼", count: 56 },
-                  { type: "Family Hotels", icon: "👨‍👩‍👧‍👦", count: 34 },
-                  { type: "Boutique Hotels", icon: "🎨", count: 19 },
-                  { type: "Airport Hotels", icon: "✈️", count: 12 },
-                  { type: "Beach Hotels", icon: "🏖️", count: 28 },
-                ].map((hotelType, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg p-4 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer text-center"
-                  >
-                    <div className="text-3xl mb-2">{hotelType.icon}</div>
-                    <div className="font-medium text-gray-900 text-sm">{hotelType.type}</div>
-                    <div className="text-xs text-gray-500">{hotelType.count} hotels</div>
-                  </div>
-                ))}
-              </div>
+          {/* Hotel Types */}
+          <motion.div {...fadeInUp} transition={{ delay: 0.6 }} className="mt-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Browse by Hotel Type</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { type: "Luxury Hotels", icon: "🏨", count: 45 },
+                { type: "Budget Hotels", icon: "💰", count: 78 },
+                { type: "Resorts", icon: "🏖️", count: 23 },
+                { type: "Business Hotels", icon: "💼", count: 56 },
+                { type: "Family Hotels", icon: "👨‍👩‍👧‍👦", count: 34 },
+                { type: "Boutique Hotels", icon: "🎨", count: 19 },
+                { type: "Airport Hotels", icon: "✈️", count: 12 },
+                { type: "Beach Hotels", icon: "🏖️", count: 28 },
+              ].map((hotelType, index) => (
+                <motion.div
+                  key={index}
+                  {...hoverLift}
+                  transition={{ delay: index * 0.05 }}
+                  className="bg-white rounded-lg p-4 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer text-center"
+                >
+                  <div className="text-3xl mb-2">{hotelType.icon}</div>
+                  <div className="font-medium text-gray-900 text-sm">{hotelType.type}</div>
+                  <div className="text-xs text-gray-500">{hotelType.count} hotels</div>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </main>
+      </motion.main>
 
       <Footer />
     </div>

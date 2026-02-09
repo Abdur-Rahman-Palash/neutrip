@@ -1,43 +1,123 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { gsap } from "@/lib/animations/gsap-config";
+import { ThreeBackground } from "@/lib/animations/three-background";
 
 type Tab = "flight" | "hotel" | "holiday";
 
 export function HeroSearch() {
   const [activeTab, setActiveTab] = useState<Tab>("flight");
+  const heroRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const searchPanelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (titleRef.current) {
+      gsap.fromTo(
+        titleRef.current,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
+      );
+    }
+
+    if (searchPanelRef.current) {
+      gsap.fromTo(
+        searchPanelRef.current,
+        { y: 100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: "power3.out" }
+      );
+    }
+  }, []);
 
   return (
-    <section className="relative w-full bg-blue-50 py-20 lg:py-32">
-      {/* Background Decor - simple gradient/pattern for travel feel */}
+    <section ref={heroRef} className="relative w-full bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-20 lg:py-32 overflow-hidden">
+      {/* Three.js Background */}
+      <ThreeBackground />
+      
+      {/* Animated Overlay Gradients */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-blue-100/50 blur-3xl" />
-        <div className="absolute top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-cyan-100/50 blur-3xl" />
+        <motion.div 
+          className="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-blue-500/20 blur-3xl"
+          animate={{
+            x: [0, 30, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div 
+          className="absolute top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-cyan-500/20 blur-3xl"
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
       </div>
 
       <div className="container relative mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center mb-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight">
+        <motion.div 
+          className="flex flex-col items-center text-center mb-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <motion.h1 
+            ref={titleRef}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+          >
             Your Journey Starts Here
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl">
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl text-blue-100 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
             Flights, Hotels & Holidays at the Best Price
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Search Panel */}
-        <div className="bg-white rounded-2xl shadow-xl max-w-5xl mx-auto overflow-hidden border border-gray-100">
+        <motion.div 
+          ref={searchPanelRef}
+          className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl max-w-5xl mx-auto overflow-hidden border border-white/20"
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+          whileHover={{ scale: 1.02 }}
+        >
           {/* Tabs */}
           <div className="flex border-b border-gray-100">
-            <button
+            <motion.button
               onClick={() => setActiveTab("flight")}
-              className={`flex-1 py-4 text-sm font-semibold flex items-center justify-center gap-2 transition-colors ${
+              className={`flex-1 py-4 text-sm font-semibold flex items-center justify-center gap-2 transition-colors relative ${
                 activeTab === "flight"
-                  ? "text-blue-600 border-b-2 border-blue-600 bg-blue-50/50"
+                  ? "text-blue-600 bg-blue-50/50"
                   : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
               }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
+              {activeTab === "flight" && (
+                <motion.div 
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600"
+                  layoutId="activeTab"
+                />
+              )}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"
@@ -51,19 +131,27 @@ export function HeroSearch() {
                 <path d="M22 2L2 22" />
                 <path d="M12 2L2 22" />
                 <path d="M22 2L12 22" />
-                <path d="M2 12H22" /> {/* Placeholder Plane Icon */}
+                <path d="M2 12H22" />
                 <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.7l-1.2 4 6 3.2-2 2-4-1.5L1 16c7.4 2.6 13.4 5.6 19.2 7.4.7.2 1.4-.4 1.2-1.1l-2.6-4.1z" />
               </svg>
               Flight
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => setActiveTab("hotel")}
-              className={`flex-1 py-4 text-sm font-semibold flex items-center justify-center gap-2 transition-colors ${
+              className={`flex-1 py-4 text-sm font-semibold flex items-center justify-center gap-2 transition-colors relative ${
                 activeTab === "hotel"
-                  ? "text-blue-600 border-b-2 border-blue-600 bg-blue-50/50"
+                  ? "text-blue-600 bg-blue-50/50"
                   : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
               }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
+              {activeTab === "hotel" && (
+                <motion.div 
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600"
+                  layoutId="activeTab"
+                />
+              )}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"
@@ -81,15 +169,23 @@ export function HeroSearch() {
                 <rect x="13" y="5" width="2" height="2" />
               </svg>
               Hotel
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => setActiveTab("holiday")}
-              className={`flex-1 py-4 text-sm font-semibold flex items-center justify-center gap-2 transition-colors ${
+              className={`flex-1 py-4 text-sm font-semibold flex items-center justify-center gap-2 transition-colors relative ${
                 activeTab === "holiday"
-                  ? "text-blue-600 border-b-2 border-blue-600 bg-blue-50/50"
+                  ? "text-blue-600 bg-blue-50/50"
                   : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
               }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
+              {activeTab === "holiday" && (
+                <motion.div 
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600"
+                  layoutId="activeTab"
+                />
+              )}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"
@@ -101,15 +197,10 @@ export function HeroSearch() {
                 strokeLinejoin="round"
               >
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="M8 11h8" />
-                <path d="M12 7v8" /> {/* Placeholder Holiday Icon */}
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                <path d="M2 12h20" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                <circle cx="12" cy="12" r="3" />
               </svg>
               Holiday
-            </button>
+            </motion.button>
           </div>
 
           {/* Tab Content */}
@@ -189,20 +280,30 @@ export function HeroSearch() {
 
                 {/* Search Button */}
                 <div className="lg:col-span-12 flex justify-center mt-4 lg:mt-6">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     <Button size="lg" className="w-full md:w-auto px-12 py-6 text-lg rounded-xl shadow-lg shadow-blue-600/20">
                       Search Flights
                     </Button>
+                  </motion.div>
                 </div>
               </div>
             )}
             
             {activeTab !== "flight" && (
-                <div className="flex flex-col items-center justify-center py-10 text-gray-500">
-                    <p>Search functionality for {activeTab} coming soon.</p>
-                </div>
+              <motion.div 
+                className="flex flex-col items-center justify-center py-10 text-gray-500"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <p>Search functionality for {activeTab} coming soon.</p>
+              </motion.div>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

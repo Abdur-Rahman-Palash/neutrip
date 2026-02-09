@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { fadeInUp, slideInLeft, slideInRight, scaleIn, staggerContainer, hoverScale, hoverLift } from "@/components/layout/AnimatedLayout";
 
 export default function About() {
   const [activeTab, setActiveTab] = useState("story");
@@ -78,10 +80,10 @@ export default function About() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="pt-24 pb-12">
+      <motion.main {...staggerContainer} className="pt-24 pb-12">
         <div className="container mx-auto px-4 md:px-6">
           {/* Hero Section */}
-          <div className="text-center mb-16">
+          <motion.div {...fadeInUp} className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               About ShareTrip Clone
             </h1>
@@ -91,25 +93,34 @@ export default function About() {
               to excellence, we've helped millions of travelers discover their perfect journeys.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">Our Story</Button>
-              <Button variant="outline" size="lg">Contact Us</Button>
+              <motion.div {...hoverScale}>
+                <Button size="lg">Our Story</Button>
+              </motion.div>
+              <motion.div {...hoverScale}>
+                <Button variant="outline" size="lg">Contact Us</Button>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <motion.div {...fadeInUp} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
+              <motion.div 
+                key={index} 
+                {...scaleIn}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
                 <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
                   {stat.number}
                 </div>
                 <div className="text-gray-600 font-medium">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Tabs Navigation */}
-          <div className="flex justify-center mb-8">
+          <motion.div {...fadeInUp} className="flex justify-center mb-8">
             <div className="bg-white rounded-lg shadow-sm p-1 inline-flex">
               {[
                 { id: "story", label: "Our Story" },
@@ -117,9 +128,10 @@ export default function About() {
                 { id: "team", label: "Our Team" },
                 { id: "values", label: "Our Values" }
               ].map((tab) => (
-                <button
+                <motion.button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
+                  {...hoverScale}
                   className={`px-6 py-3 rounded-md font-medium transition-colors ${
                     activeTab === tab.id
                       ? "bg-blue-600 text-white"
@@ -127,15 +139,15 @@ export default function About() {
                   }`}
                 >
                   {tab.label}
-                </button>
+                </motion.button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Tab Content */}
-          <div className="bg-white rounded-lg shadow-sm p-8 mb-16">
+          <motion.div {...fadeInUp} className="bg-white rounded-lg shadow-sm p-8 mb-16">
             {activeTab === "story" && (
-              <div className="max-w-4xl mx-auto">
+              <motion.div {...scaleIn} className="max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
                 <div className="prose prose-lg text-gray-600">
                   <p>
@@ -156,15 +168,15 @@ export default function About() {
                     developed with our travel partners.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {activeTab === "mission" && (
-              <div className="max-w-4xl mx-auto">
+              <motion.div {...scaleIn} className="max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Mission & Vision</h2>
                 
                 <div className="grid md:grid-cols-2 gap-8">
-                  <div>
+                  <motion.div {...slideInLeft}>
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
                     <p className="text-gray-600">
                       To make travel accessible, affordable, and enjoyable for everyone by providing 
@@ -172,26 +184,31 @@ export default function About() {
                       We strive to be the most trusted travel partner for Bangladeshis exploring both domestic 
                       and international destinations.
                     </p>
-                  </div>
+                  </motion.div>
                   
-                  <div>
+                  <motion.div {...slideInRight}>
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
                     <p className="text-gray-600">
                       To be the leading travel platform in South Asia, known for innovation, reliability, 
                       and customer-centric approach. We envision a world where travel is seamless, sustainable, 
                       and enriching for all, connecting people across borders and cultures.
                     </p>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {activeTab === "team" && (
-              <div>
+              <motion.div {...scaleIn}>
                 <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Meet Our Team</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {team.map((member, index) => (
-                    <div key={index} className="text-center">
+                    <motion.div 
+                      key={index} 
+                      {...hoverLift}
+                      transition={{ delay: index * 0.1 }}
+                      className="text-center"
+                    >
                       <img 
                         src={member.image} 
                         alt={member.name}
@@ -200,38 +217,48 @@ export default function About() {
                       <h3 className="text-lg font-bold text-gray-900 mb-1">{member.name}</h3>
                       <p className="text-blue-600 font-medium mb-2">{member.role}</p>
                       <p className="text-sm text-gray-600">{member.bio}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {activeTab === "values" && (
-              <div>
+              <motion.div {...scaleIn}>
                 <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Values</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {values.map((value, index) => (
-                    <div key={index} className="flex gap-4">
+                    <motion.div 
+                      key={index} 
+                      {...hoverLift}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex gap-4"
+                    >
                       <div className="text-4xl">{value.icon}</div>
                       <div>
                         <h3 className="text-lg font-bold text-gray-900 mb-2">{value.title}</h3>
                         <p className="text-gray-600">{value.description}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )}
-          </div>
+          </motion.div>
 
           {/* Milestones Timeline */}
-          <div className="mb-16">
+          <motion.div {...fadeInUp} className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Journey</h2>
             <div className="relative">
               <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
               <div className="space-y-8">
                 {milestones.map((milestone, index) => (
-                  <div key={index} className="flex items-center gap-8">
+                  <motion.div 
+                    key={index} 
+                    {...slideInLeft}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center gap-8"
+                  >
                     <div className="flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
                       {milestone.year}
                     </div>
@@ -239,14 +266,14 @@ export default function About() {
                       <h3 className="text-lg font-bold text-gray-900 mb-2">{milestone.title}</h3>
                       <p className="text-gray-600">{milestone.description}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Partners */}
-          <div className="mb-16">
+          <motion.div {...fadeInUp} className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Partners</h2>
             <div className="bg-white rounded-lg shadow-sm p-8">
               <p className="text-center text-gray-600 mb-6">
@@ -254,34 +281,43 @@ export default function About() {
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
                 {["Biman Bangladesh", "US-Bangla Airlines", "Novoair", "Air Arabia", "Emirates", "Qatar Airways", "Pan Pacific", "Radisson Blu", "Six Seasons", "Long Beach Hotel", "Grand Sultan Tea Resort"].map((partner, index) => (
-                  <div key={index} className="text-center">
+                  <motion.div 
+                    key={index} 
+                    {...hoverScale}
+                    transition={{ delay: index * 0.05 }}
+                    className="text-center"
+                  >
                     <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2">
                       <span className="text-xs font-bold text-gray-600">{partner.substring(0, 3)}</span>
                     </div>
                     <p className="text-sm text-gray-600">{partner}</p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* CTA Section */}
-          <div className="bg-blue-600 rounded-lg p-8 text-center">
+          <motion.div {...scaleIn} className="bg-blue-600 rounded-lg p-8 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">Join Our Team</h2>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
               We're always looking for talented individuals who share our passion for travel and commitment to excellence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-blue-600">
-                View Open Positions
-              </Button>
-              <Button className="bg-white text-blue-600 hover:bg-gray-100">
-                Contact HR
-              </Button>
+              <motion.div {...hoverScale}>
+                <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-blue-600">
+                  View Open Positions
+                </Button>
+              </motion.div>
+              <motion.div {...hoverScale}>
+                <Button className="bg-white text-blue-600 hover:bg-gray-100">
+                  Contact HR
+                </Button>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </main>
+      </motion.main>
 
       <Footer />
     </div>
