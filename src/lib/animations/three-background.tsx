@@ -5,11 +5,11 @@ import * as THREE from 'three';
 
 export const ThreeBackground = () => {
   const mountRef = useRef<HTMLDivElement>(null);
-  const sceneRef = useRef<THREE.Scene>();
-  const rendererRef = useRef<THREE.WebGLRenderer>();
-  const cameraRef = useRef<THREE.PerspectiveCamera>();
-  const particlesRef = useRef<THREE.Points>();
-  const frameRef = useRef<number>();
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const particlesRef = useRef<THREE.Points | null>(null);
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!mountRef.current) return;

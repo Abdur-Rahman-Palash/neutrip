@@ -118,7 +118,7 @@ export function OffersSection() {
           {offers.map((offer, index) => (
             <motion.div
               key={offer.id}
-              ref={(el) => (cardRefs.current[index] = el)}
+              ref={(el) => { cardRefs.current[index] = el; }}
               className="min-w-[300px] md:min-w-[350px] bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 snap-start flex flex-col overflow-hidden group"
               whileHover={{ 
                 y: -5,

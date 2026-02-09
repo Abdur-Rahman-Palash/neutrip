@@ -112,7 +112,7 @@ export function Destinations() {
           {destinations.map((destination, index) => (
             <motion.div
               key={destination.id}
-              ref={(el) => destinationRefs.current[index] = el}
+              ref={(el) => { destinationRefs.current[index] = el; }}
               className="group relative rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500"
               whileHover={{ 
                 y: -8,

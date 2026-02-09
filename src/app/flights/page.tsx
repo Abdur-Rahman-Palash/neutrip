@@ -181,9 +181,11 @@ export default function FlightSearch() {
                     children={children}
                     infants={infants}
                     cabinClass={cabinClass}
-                    onAdultsChange={setAdults}
-                    onChildrenChange={setChildren}
-                    onInfantsChange={setInfants}
+                    onChange={(newAdults, newChildren, newInfants) => {
+                      setAdults(newAdults);
+                      setChildren(newChildren);
+                      setInfants(newInfants);
+                    }}
                     onCabinClassChange={setCabinClass}
                   />
                 </div>

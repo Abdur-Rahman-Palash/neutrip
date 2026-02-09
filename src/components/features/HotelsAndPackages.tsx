@@ -145,7 +145,7 @@ export function HotelsAndPackages() {
               {hotels.map((hotel, index) => (
                 <motion.div
                   key={hotel.id}
-                  ref={(el) => cardRefs.current[index] = el}
+                  ref={(el) => { cardRefs.current[index] = el; }}
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group cursor-pointer"
                   whileHover={{ 
                     y: -8,
@@ -227,7 +227,7 @@ export function HotelsAndPackages() {
               {holidayPackages.map((pkg, index) => (
                 <motion.div
                   key={pkg.id}
-                  ref={(el) => cardRefs.current[index] = el}
+                  ref={(el) => { cardRefs.current[index] = el; }}
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group cursor-pointer"
                   whileHover={{ 
                     y: -8,

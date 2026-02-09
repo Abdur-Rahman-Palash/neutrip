@@ -98,7 +98,7 @@ export default function HotelSearch() {
             <p className="text-lg text-gray-600">
               Find the perfect accommodation for your trip
             </p>
-          </div>
+          </motion.div>
 
           {/* Search Form */}
           <motion.div {...scaleIn} className="max-w-4xl mx-auto">
@@ -254,7 +254,7 @@ export default function HotelSearch() {
                     </div>
                   )}
                 </div>
-              </div>
+              </motion.div>
 
               {/* Search Button */}
               <motion.div {...hoverScale} transition={{ delay: 0.4 }} className="text-center">

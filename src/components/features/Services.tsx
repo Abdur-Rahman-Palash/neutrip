@@ -110,7 +110,7 @@ export function Services() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <Link
-                ref={(el) => serviceRefs.current[index] = el}
+                ref={(el) => { serviceRefs.current[index] = el; }}
                 href={service.link}
                 className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-2xl transition-all duration-500 bg-white group cursor-pointer relative overflow-hidden"
               >

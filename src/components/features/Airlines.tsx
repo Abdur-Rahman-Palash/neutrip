@@ -83,7 +83,7 @@ export function Airlines() {
           {airlines.map((airline, index) => (
             <motion.div
               key={airline.id}
-              ref={(el) => airlineRefs.current[index] = el}
+              ref={(el) => { airlineRefs.current[index] = el; }}
               className="flex-shrink-0 flex flex-col items-center gap-3 min-w-[120px] snap-start group cursor-pointer"
               whileHover={{ 
                 y: -8,
