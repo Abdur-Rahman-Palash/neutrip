@@ -321,7 +321,7 @@ export default function OffersPage() {
             <ul className="text-sm text-gray-600 space-y-1">
               <li>• Offers cannot be combined with other promotions unless specified</li>
               <li>• All offers are subject to availability and terms of the service provider</li>
-              <li>• ShareTrip reserves the right to modify or cancel any offer without prior notice</li>
+              <li>• NeuTrip reserves the right to modify or cancel any offer without prior notice</li>
               <li>• Offers are valid for the specified period only</li>
               <li>• Please read individual offer terms before booking</li>
             </ul>

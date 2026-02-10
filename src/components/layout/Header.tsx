@@ -79,7 +79,7 @@ export function Header() {
                 </svg>
               </div>
               <span className="text-xl font-bold text-gray-900 tracking-tight">
-                ShareTrip<span className="text-blue-600">Clone</span>
+                Neu<span className="text-blue-600">Trip</span>
               </span>
             </Link>
           </motion.div>

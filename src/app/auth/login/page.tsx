@@ -73,7 +73,7 @@ function LoginContent() {
                   Welcome Back
                 </h1>
                 <p className="text-gray-600">
-                  Sign in to your ShareTrip Clone account
+                  Sign in to your NeuTrip account
                 </p>
               </div>
 

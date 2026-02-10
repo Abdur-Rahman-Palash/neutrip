@@ -129,7 +129,7 @@ function RegisterContent() {
                   Create Account
                 </h1>
                 <p className="text-gray-600">
-                  Join ShareTrip Clone and start your journey
+                  Join NeuTrip and start your journey
                 </p>
               </div>
 

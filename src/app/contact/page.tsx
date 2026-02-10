@@ -48,20 +48,20 @@ export default function Contact() {
       title: "Head Office",
       address: "Rangs Pearl Tower, 4th Floor, House 76, Road 12, Block E, Banani, Dhaka 1213",
       phone: "+880 9617-617-617",
-      email: "info@sharetrip.net",
+      email: "info@neutrip.net",
       hours: "Saturday - Thursday: 9:00 AM - 8:00 PM, Friday: 9:00 AM - 6:00 PM"
     },
     {
       title: "Customer Support",
       phone: "+880 9617-617-618",
-      email: "support@sharetrip.net",
+      email: "support@neutrip.net",
       hours: "24/7 Available"
     },
     {
       title: "Corporate Office",
       address: "Gulshan Circle 1, Dhaka 1212",
       phone: "+880 9617-617-619",
-      email: "corporate@sharetrip.net",
+      email: "corporate@neutrip.net",
       hours: "Monday - Friday: 9:00 AM - 6:00 PM"
     }
   ];
@@ -227,7 +227,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="font-medium text-gray-900">Email Support</div>
-                      <div className="text-sm text-gray-600">support@sharetrip.net</div>
+                      <div className="text-sm text-gray-600">support@neutrip.net</div>
                     </div>
                   </motion.div>
                 </div>

@@ -16,7 +16,7 @@ interface FAQ {
 const faqs: FAQ[] = [
   {
     id: "1",
-    question: "How do I book a flight on ShareTrip?",
+    question: "How do I book a flight on NeuTrip?",
     answer: "You can book flights through our website by entering your travel details in the flight search form. Select your departure and arrival cities, choose travel dates, number of passengers, and click search. From the results, select your preferred flight and follow the booking process.",
     category: "booking",
     tags: ["flights", "booking", "website"]
@@ -40,7 +40,7 @@ const faqs: FAQ[] = [
     question: "Do you offer travel insurance?",
     answer: "Yes, we offer comprehensive travel insurance options that cover medical emergencies, trip cancellations, lost luggage, and other travel-related risks. You can add insurance during the booking process.",
     category: "insurance",
-    tags: ["insurance", "safety", "ShareTrip Clone"]
+    tags: ["insurance", "safety", "NeuTrip"]
   },
   {
     id: "5",
@@ -101,7 +101,7 @@ const faqs: FAQ[] = [
   {
     id: "13",
     question: "How do I contact customer support?",
-    answer: "You can reach our 24/7 customer support via phone at +880 9617-617-617, email at support@sharetrip.net, or through our live chat feature on the website.",
+    answer: "You can reach our 24/7 customer support via phone at +880 9617-617-617, email at support@neutrip.net, or through our live chat feature on the website.",
     category: "support",
     tags: ["support", "contact", "24/7"]
   },

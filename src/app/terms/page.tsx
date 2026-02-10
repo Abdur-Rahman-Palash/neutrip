@@ -28,7 +28,7 @@ export default function Terms() {
                   1. Acceptance of Terms
                 </h2>
                 <p>
-                  By accessing and using ShareTrip Clone ("the Service"), you accept and agree to be bound by these Terms and Conditions. 
+                  By accessing and using NeuTrip ("the Service"), you accept and agree to be bound by these Terms and Conditions. 
                   If you do not agree to these terms, you may not access or use the Service.
                 </p>
 
@@ -36,7 +36,7 @@ export default function Terms() {
                   2. Description of Service
                 </h2>
                 <p>
-                  ShareTrip Clone is an online travel booking platform that provides:
+                  NeuTrip is an online travel booking platform that provides:
                 </p>
                 <ul>
                   <li>Flight booking services</li>
@@ -63,7 +63,7 @@ export default function Terms() {
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">3.2 Account Security</h3>
                 <p>
-                  You are responsible for maintaining the security of your account. ShareTrip Clone will not be liable for any loss or damage resulting from unauthorized use of your account.
+                  You are responsible for maintaining the security of your account. NeuTrip will not be liable for any loss or damage resulting from unauthorized use of your account.
                 </p>
 
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">3.3 Account Termination</h3>
@@ -100,7 +100,7 @@ export default function Terms() {
                   6. Intellectual Property
                 </h2>
                 <p>
-                  All content, trademarks, and intellectual property on the Service belong to ShareTrip Clone or its licensors.
+                  All content, trademarks, and intellectual property on the Service belong to NeuTrip or its licensors.
                 </p>
 
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
@@ -114,14 +114,14 @@ export default function Terms() {
                   8. Limitation of Liability
                 </h2>
                 <p>
-                  ShareTrip Clone is not liable for any indirect, incidental, special, or consequential damages arising from your use of the Service.
+                  NeuTrip is not liable for any indirect, incidental, special, or consequential damages arising from your use of the Service.
                 </p>
 
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
                   9. Indemnification
                 </h2>
                 <p>
-                  ShareTrip Clone provides the Service on an "as is" basis without warranties of any kind.
+                  NeuTrip provides the Service on an "as is" basis without warranties of any kind.
                 </p>
 
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
@@ -152,7 +152,7 @@ export default function Terms() {
                   For questions about these Terms and Conditions, please contact us at:
                 </p>
                 <ul>
-                  <li>Email: legal@sharetrip.net</li>
+                  <li>Email: legal@neutrip.net</li>
                   <li>Phone: +880 9617-617-617</li>
                   <li>Address: Rangs Pearl Tower, 4th Floor, House 76, Road 12, Block E, Banani, Dhaka 1213</li>
                 </ul>

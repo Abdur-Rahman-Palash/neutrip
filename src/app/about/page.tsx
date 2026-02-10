@@ -85,7 +85,7 @@ export default function About() {
           {/* Hero Section */}
           <motion.div {...fadeInUp} className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              About ShareTrip Clone
+              About NeuTrip
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               We are Bangladesh's leading travel platform, dedicated to making travel accessible, 
@@ -151,7 +151,7 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
                 <div className="prose prose-lg text-gray-600">
                   <p>
-                    ShareTrip Clone began in 2015 with a simple mission: to make travel accessible to everyone in Bangladesh. 
+                    NeuTrip began in 2015 with a simple mission: to make travel accessible to everyone in Bangladesh. 
                     What started as a small travel agency in Dhaka has grown into the country's leading 
                     digital travel platform, serving over 2 million customers.
                   </p>

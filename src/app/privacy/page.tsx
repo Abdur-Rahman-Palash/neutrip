@@ -202,7 +202,7 @@ export default function Privacy() {
                   For privacy-related questions, contact us at:
                 </p>
                 <ul>
-                  <li>Email: privacy@sharetrip.net</li>
+                  <li>Email: privacy@neutrip.net</li>
                   <li>Phone: +880 9617-617-617</li>
                   <li>Address: Rangs Pearl Tower, 4th Floor, House 76, Road 12, Block E, Banani, Dhaka 1213</li>
                 </ul>

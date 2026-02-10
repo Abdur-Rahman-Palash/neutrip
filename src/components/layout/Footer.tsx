@@ -27,7 +27,7 @@ export function Footer() {
                   </svg>
                 </div>
                 <span className="text-xl font-bold text-white tracking-tight">
-                  ShareTrip<span className="text-blue-500">Clone</span>
+                  Neu<span className="text-blue-500">Trip</span>
                 </span>
               </Link>
             <p className="text-sm leading-relaxed mb-6 text-gray-400">
@@ -77,7 +77,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                 <span>support@sharetrip.net</span>
+                 <span>support@neutrip.net</span>
               </li>
               <li className="flex items-start gap-3">
                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -88,7 +88,7 @@ export function Footer() {
         </div>
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-           <p>&copy; {new Date().getFullYear()} ShareTrip Clone. All rights reserved.</p>
+           <p>&copy; {new Date().getFullYear()} NeuTrip. All rights reserved.</p>
            <div className="flex gap-4">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>
               <a href="#" className="hover:text-white transition-colors">Terms</a>

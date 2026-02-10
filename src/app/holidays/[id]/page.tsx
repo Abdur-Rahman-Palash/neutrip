@@ -506,7 +506,7 @@ export default function HolidayPackageDetails() {
                 <div className="mt-6 text-center">
                   <div className="text-sm text-gray-600 mb-2">Need help?</div>
                   <div className="text-sm font-medium text-blue-600">Call: +880 9617-617-617</div>
-                  <div className="text-sm font-medium text-blue-600">Email: holidays@sharetrip.net</div>
+                  <div className="text-sm font-medium text-blue-600">Email: holidays@neutrip.net</div>
                 </div>
               </div>
             </div>
