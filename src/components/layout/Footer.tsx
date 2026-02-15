@@ -87,12 +87,24 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-           <p>&copy; {new Date().getFullYear()} NeuTrip. All rights reserved.</p>
-           <div className="flex gap-4">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+        <div className="border-t border-gray-800 pt-8">
+           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 mb-6">
+              <p>&copy; {new Date().getFullYear()} NeuTrip. All rights reserved.</p>
+              <div className="flex gap-4">
+                 <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                 <a href="#" className="hover:text-white transition-colors">Terms</a>
+                 <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+              </div>
+           </div>
+           <div className="text-center">
+              <a 
+                href="https://neubyte.tech" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-lg font-semibold text-gray-400 hover:text-blue-400 transition-colors"
+              >
+                Powered by- neubyte.tech
+              </a>
            </div>
         </div>
       </div>
